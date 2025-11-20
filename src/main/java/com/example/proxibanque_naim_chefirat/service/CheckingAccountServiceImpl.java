@@ -1,5 +1,6 @@
 package com.example.proxibanque_naim_chefirat.service;
 
+import com.example.proxibanque_naim_chefirat.entity.BankAccountInterface;
 import com.example.proxibanque_naim_chefirat.entity.CheckingAccount;
 import com.example.proxibanque_naim_chefirat.repository.CheckingAccountRepository;
 import lombok.RequiredArgsConstructor;
@@ -31,5 +32,15 @@ public class CheckingAccountServiceImpl implements CheckingAccountService {
             return ret;
         }
         return  checkingAccountRepository.save(account);
+    }
+
+    @Override
+    public boolean sendMoneyTo(BankAccountInterface dst, double amount) {
+        var maybe = checkingAccountRepository.findById(dst.getId());
+        if (maybe.isPresent()) {
+            var ret = maybe.get();
+            return ret.sendMoneyTo(dst, amount);
+        }
+        return false;
     }
 }

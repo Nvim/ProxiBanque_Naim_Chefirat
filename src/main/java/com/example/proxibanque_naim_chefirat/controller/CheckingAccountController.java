@@ -1,5 +1,7 @@
 package com.example.proxibanque_naim_chefirat.controller;
 
+import com.example.proxibanque_naim_chefirat.dto.AccountPayload;
+import com.example.proxibanque_naim_chefirat.dto.SendMoneyPayload;
 import com.example.proxibanque_naim_chefirat.entity.CheckingAccount;
 import com.example.proxibanque_naim_chefirat.service.CheckingAccountService;
 import lombok.RequiredArgsConstructor;

@@ -1,5 +1,6 @@
 package com.example.proxibanque_naim_chefirat.service;
 
+import com.example.proxibanque_naim_chefirat.entity.BankAccountInterface;
 import com.example.proxibanque_naim_chefirat.entity.CheckingAccount;
 import com.example.proxibanque_naim_chefirat.entity.SavingAccount;
 
@@ -10,4 +11,5 @@ public interface SavingAccountService {
     List<SavingAccount> getSavingAccounts();
     Optional<SavingAccount> getSavingAccountById(long id);
     SavingAccount updateSavingAccount(SavingAccount checkingAccount);
+    boolean sendMoneyTo(BankAccountInterface dst, double amount);
 }

@@ -10,4 +10,22 @@ public interface BankAccountInterface {
     double getBalance();
     double getMaxDecouvert();
     double getRemuneration();
+    void setBalance(double amount);
+
+    default boolean sendMoneyTo(BankAccountInterface dst, double amount) {
+        if (amount <= 0) {
+            return false;
+        }
+        var srcBalance = getBalance();
+        var diff = srcBalance - amount;
+
+        if (Math.abs(diff) > getMaxDecouvert()) {
+            return false;
+        }
+
+        dst.setBalance(dst.getBalance() + amount);
+        return true;
+    }
+
+    long getId();
 }

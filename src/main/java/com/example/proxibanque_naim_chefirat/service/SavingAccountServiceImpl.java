@@ -1,5 +1,6 @@
 package com.example.proxibanque_naim_chefirat.service;
 
+import com.example.proxibanque_naim_chefirat.entity.BankAccountInterface;
 import com.example.proxibanque_naim_chefirat.entity.SavingAccount;
 import com.example.proxibanque_naim_chefirat.repository.CheckingAccountRepository;
 import com.example.proxibanque_naim_chefirat.repository.SavingAccountRepository;
@@ -32,5 +33,15 @@ public class SavingAccountServiceImpl implements SavingAccountService {
             return ret;
         }
         return  savingAccountRepository.save(account);
+    }
+
+    @Override
+    public boolean sendMoneyTo(BankAccountInterface dst, double amount) {
+        var maybe = savingAccountRepository.findById(dst.getId());
+        if (maybe.isPresent()) {
+            var ret = maybe.get();
+            return ret.sendMoneyTo(dst, amount);
+        }
+        return false;
     }
 }
