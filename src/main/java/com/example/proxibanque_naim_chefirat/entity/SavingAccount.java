@@ -15,8 +15,8 @@ public class SavingAccount implements BankAccountInterface {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private final double MAX_DECOUVERT = 0;
-    private final double REMUNERATION = 3;
+    private final static double MAX_DECOUVERT = 0;
+    private final static double REMUNERATION = 3;
 
     private double balance;
 

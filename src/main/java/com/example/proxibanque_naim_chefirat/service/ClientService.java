@@ -11,4 +11,5 @@ public interface ClientService {
     Optional<Client> getClient(long id);
     Client createClient(Client client);
     Client updateClient(Client client);
+    boolean deleteClient(long id);
 }

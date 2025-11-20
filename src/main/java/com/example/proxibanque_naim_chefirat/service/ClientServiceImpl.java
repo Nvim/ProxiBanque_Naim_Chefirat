@@ -45,8 +45,20 @@ public class ClientServiceImpl implements ClientService {
             var c = maybe.get();
             c.setFirstName(client.getFirstName());
             c.setLastName(client.getLastName());
+            c.setCheckingAccount(client.getCheckingAccount());
+            c.setSavingAccount(client.getSavingAccount());
             return c;
         }
         return repository.save(client);
+    }
+
+    @Override
+    public boolean deleteClient(long id) {
+        var maybe = getClient(id);
+        if (maybe.isPresent()) {
+            repository.delete(maybe.get());
+            return true;
+        }
+        return false;
     }
 }

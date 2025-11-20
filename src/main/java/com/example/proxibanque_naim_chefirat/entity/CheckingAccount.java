@@ -16,8 +16,8 @@ public class CheckingAccount implements BankAccountInterface {
     private long id;
     private double balance;
 
-    private final double MAX_DECOUVERT = 1000;
-    private final double REMUNERATION = 0;
+    private final static double MAX_DECOUVERT = 1000;
+    private final static double REMUNERATION = 0;
 
     @Override
     public double getBalance() {
